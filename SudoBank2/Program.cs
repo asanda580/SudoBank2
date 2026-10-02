@@ -1,4 +1,3 @@
-﻿// 1. Explain the line below.
 public interface IRepository
 {
     void Create(BankAccount account);
@@ -13,20 +12,20 @@ public abstract class AccountBase
     public string AccountNumber { get; set; }
     public string AccountHolder { get; set; }
     public double Balance { get; set; }
-    // 2. CalculateInterest is abstract, what does that mean?
+    
     public abstract double CalculateInterest();
 
     public virtual void GenerateStatement()
     {
         Console.WriteLine("Generating generic account statement...");
     }
-    // 3. What does virtual mean in this context of GenerateStatement
+
     public virtual void GenerateStatement(DateTime startDate)
     {
         Console.WriteLine($"Generating statement starting from {startDate.ToShortDateString()}");
     }
 }
-// 4. Describe this class below. How do we call the method below.
+
 public static class BankValidator
 {
     public static void ValidateString(string input)
@@ -38,7 +37,7 @@ public static class BankValidator
     }
 }
 
-// 5. Describe the inheritance happening below and what it means.
+
 public partial class BankManager : IRepository
 {
     private BankAccount[] _accounts = new BankAccount[100];
@@ -48,7 +47,7 @@ public partial class BankManager : IRepository
     {
         if (account == null || _accountCount >= _accounts.Length)
         {
-            // 6. What does this line below do in this context.
+        
             throw new Exception();
         }
         _accounts[_accountCount] = account;
@@ -101,7 +100,7 @@ public partial class BankManager
     }
 }
 
-// 7. Describe the inheritance below and the significance of AccountBase
+
 public class BankAccount : AccountBase
 {
     public double InterestRate { get; set; }
